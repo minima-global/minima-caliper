@@ -23,6 +23,7 @@ const packages = [
     'caliper-ethereum',
     'caliper-fabric',
     'caliper-fisco-bcos',
+    'caliper-minima',
     'caliper-cli',
     'generator-caliper'
 ];

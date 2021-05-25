@@ -21,6 +21,7 @@ rm -rf ./packages/caliper-core/node_modules
 rm -rf ./packages/caliper-ethereum/node_modules
 rm -rf ./packages/caliper-fabric/node_modules
 rm -rf ./packages/caliper-fisco-bcos/node_modules
+rm -rf ./packages/caliper-minima/node_modules
 rm -rf ./packages/caliper-gui-dashboard/node_modules
 rm -rf ./packages/caliper-gui-server/node_modules
 rm -rf ./packages/caliper-publish/node_modules

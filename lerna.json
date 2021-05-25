@@ -9,6 +9,7 @@
         "packages/caliper-ethereum",
         "packages/caliper-fabric",
         "packages/caliper-fisco-bcos",
+        "packages/caliper-minima",
         "packages/caliper-cli",
         "packages/caliper-publish",
         "packages/caliper-tests-integration",

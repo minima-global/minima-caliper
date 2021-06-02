@@ -78,5 +78,5 @@ sut:
 
     minima:
         0.98.0: &minima-latest
-            packages: ['https://github.com/minima-global/minima.js.git']
+            packages: ['../../../minima.js/minima-0.96.20.tgz']
         latest: *minima-latest

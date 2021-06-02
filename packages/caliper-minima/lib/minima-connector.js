@@ -17,6 +17,7 @@
 const {CaliperUtils, ConfigUtil, ConnectorBase, TxStatus} = require('@hyperledger/caliper-core');
 const logger = CaliperUtils.getLogger('minima-connector');
 
+const axios = require('axios');
 const {Minima, Token} = require("minima");
 
 /**
@@ -115,48 +116,21 @@ const MinimaConnector = class extends ConnectorBase {
             status.SetStatusSuccess();
         };
 
-//        if (request.readOnly) {
-//            try {
-//                let receipt = undefined;
-//                switch (request.api_name) {
-//                    case "database":
-//                        receipt = await this.apiInstance.db_api().exec(request.method, request.params);
-//                        break;
-//                    case "network_broadcast":
-//                        receipt = await this.apiInstance.network_api().exec(request.method, request.params);
-//                        break;
-//                    case "history":
-//                        receipt = await this.apiInstance.history_api().exec(request.method, request.params);
-//                        break;
-//                    case "crypto":
-//                        receipt = await this.apiInstance.crypto_api().exec(request.method, request.params);
-//                        break;
-//                    case "bookie":
-//                        receipt = await this.apiInstance.bookie_api().exec(request.method, request.params);
-//                        break;
-//                    default:
-//                }
-//                onSuccess(receipt);
-//            } catch (err) {
-//                onFailure(err);
-//            }
-//        } else {
-//            let txBuilder = new TransactionBuilder();
-//            let receipt = undefined;
-//
-//            try {
-//                txBuilder.add_type_operation(request.method, request.params[0]);
-//                await txBuilder.set_required_fees();
-//                let PrivKey = PrivateKey.fromWif(this.minimaConfig.nathanPrvKey);
-//                txBuilder.add_signer(PrivKey, PrivKey.toPublicKey());
-//                const now = new Date();
-//                txBuilder.set_expire_seconds(Math.floor(now.getTime() / 1000) + 43200 + 30 * this.clientIndex + this.expirationOffset++);
-//                [receipt] = await txBuilder.broadcast();
-//                onSuccess(receipt);
-//            } catch (err) {
-//                onFailure(err);
-//            }
-//        }
+        const urlOptions = {
+            method: 'POST',
+            url: Minima.rpchost,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: request.method
+        };
+
+        try {
+            const response = await axios(urlOptions);
+            onSuccess(response);
+        } catch (error) {
+            onFailure(error);
+        }
 
         return status;
     }

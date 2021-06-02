@@ -16,7 +16,7 @@
 
 const {WorkloadModuleBase} = require('@hyperledger/caliper-core');
 
-class MinimaReadWorkload extends WorkloadModuleBase {
+class MinimaReadWriteWorkload extends WorkloadModuleBase {
     constructor() {
         super();
     }
@@ -26,7 +26,25 @@ class MinimaReadWorkload extends WorkloadModuleBase {
     }
 
     async submitTransaction() {
-        let args = "";
+        let args = [
+            {
+                method: 'gimme50',
+                params: []
+            },
+            {
+                method: 'mineblock',
+                params: []
+            },
+            {
+                method: 'mineblock',
+                params: []
+            },
+            {
+                method: 'mineblock',
+                params: []
+            }
+        ];
+
         await this.sutAdapter.sendRequests(args);
     }
 
@@ -36,7 +54,7 @@ class MinimaReadWorkload extends WorkloadModuleBase {
 }
 
 function createWorkloadModule() {
-    return new MinimaReadWorkload();
+    return new MinimaReadWriteWorkload();
 }
 
 module.exports.createWorkloadModule = createWorkloadModule;

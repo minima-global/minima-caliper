@@ -22,13 +22,13 @@ test:
         type: local
         number: 2
     rounds:
-    - label: read
-      txNumber: 200
-      rateControl: { type: 'fixed-rate', opts: { tps: 10 } }
+    - label: topblock
+      txNumber: 2000
+      rateControl: { type: 'fixed-rate', opts: { tps: 500 } }
       workload:
-          module: ./read.js
-    - label: readwrite
-      txNumber: 200
-      rateControl: { type: 'linear-rate', opts: { startingTps: 5, finishingTps: 20 } }
+          module: ./topblock.js
+    - label: gimme50
+      txNumber: 1
+      rateControl: { type: 'fixed-rate', opts: { tps: 1 } }
       workload:
-          module: ./readwrite.js
+          module: ./gimme50.js

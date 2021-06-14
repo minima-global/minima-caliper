@@ -1,4 +1,3 @@
-#!/bin/bash
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,18 +12,10 @@
 # limitations under the License.
 #
 
-# Exit on first error
-set -e
+# hidden config files
+.editorconfig
+.eslintignore
+.eslintrc.yml
 
-# distribute root README file before publishing
-cp ./README.md ./packages/caliper-cli/README.md
-cp ./README.md ./packages/caliper-core/README.md
-cp ./README.md ./packages/caliper-ethereum/README.md
-cp ./README.md ./packages/caliper-fabric/README.md
-cp ./README.md ./packages/caliper-fisco-bcos/README.md
-cp ./README.md ./packages/caliper-minima/README.md
-
-cd ./packages/caliper-publish/
-npm i
-./publish.js npm
-./publish.js docker --user klenik --publish
+# test directory
+test

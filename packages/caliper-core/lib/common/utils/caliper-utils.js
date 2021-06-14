@@ -27,7 +27,8 @@ require('winston-daily-rotate-file');
 const BuiltinConnectors = new Map([
     ['ethereum', '@hyperledger/caliper-ethereum'],
     ['fabric', '@hyperledger/caliper-fabric'],
-    ['fisco-bcos', '@hyperledger/caliper-fisco-bcos']
+    ['fisco-bcos', '@hyperledger/caliper-fisco-bcos'],
+    ['minima', '@hyperledger/caliper-minima']
 ]);
 
 const BuiltinMessengers = new Map([

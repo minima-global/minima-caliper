@@ -75,3 +75,8 @@ sut:
         1.4: &besu-latest
             packages: ['web3@1.3.0']
         latest: *besu-latest
+
+    minima:
+        0.98.0: &minima-latest
+            packages: ['../../../minima.js/minima-0.96.20.tgz']
+        latest: *minima-latest

@@ -30,6 +30,7 @@
         "@hyperledger/caliper-fabric": "0.4.2",
         "@hyperledger/caliper-ethereum": "0.4.2",
         "@hyperledger/caliper-fisco-bcos": "0.4.2",
+        "@hyperledger/caliper-minima": "0.4.2",
         "yargs": "15.3.1"
     },
     "devDependencies": {

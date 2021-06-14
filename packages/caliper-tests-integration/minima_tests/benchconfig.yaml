@@ -1,4 +1,3 @@
-#!/bin/bash
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,18 +12,23 @@
 # limitations under the License.
 #
 
-# Exit on first error
-set -e
+---
+params:
+    numberOfAccounts: &accounts 100
+    accountPhasePrefix: &prefix phase3
 
-# distribute root README file before publishing
-cp ./README.md ./packages/caliper-cli/README.md
-cp ./README.md ./packages/caliper-core/README.md
-cp ./README.md ./packages/caliper-ethereum/README.md
-cp ./README.md ./packages/caliper-fabric/README.md
-cp ./README.md ./packages/caliper-fisco-bcos/README.md
-cp ./README.md ./packages/caliper-minima/README.md
-
-cd ./packages/caliper-publish/
-npm i
-./publish.js npm
-./publish.js docker --user klenik --publish
+test:
+    workers:
+        type: local
+        number: 2
+    rounds:
+    - label: topblock
+      txNumber: 2000
+      rateControl: { type: 'fixed-rate', opts: { tps: 500 } }
+      workload:
+          module: ./topblock.js
+    - label: gimme50
+      txNumber: 1
+      rateControl: { type: 'fixed-rate', opts: { tps: 1 } }
+      workload:
+          module: ./gimme50.js
